@@ -1,59 +1,129 @@
-# TrackflowFrontend
+# Trackflow Frontend App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+**Trackflow** is a modern financial management frontend application built using Angular. It provides users with an intuitive dashboard to manage income, expenses, profiles, statistics, and more. This project connects to a Spring Boot backend and supports dynamic UI updates and Google Cloud Storage integration for profile image uploads.
 
-## Development server
+> *Generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1*
 
-To start a local development server, run:
+---
+
+## 🚀 Features
+
+* 📊 **Interactive Dashboard** with cards, statistics, recent transactions, and a calendar
+* 🔐 **User Authentication** (Sign Up / Sign In)
+* 👤 **Profile Management** with image uploads (via GCP Bucket)
+* ➕ **Add & Track Transactions** (income/expense)
+* ⚙️ **Modular Architecture** using Angular components and services
+* 🌐 **API Integration** with a Spring Boot backend
+* 💡 **Responsive UI** with reusable and shared components
+
+---
+
+## 📦 Project Structure
+
+```
+src/
+├── app/
+│   ├── components/       # Shared and page-specific UI components
+│   ├── services/         # HTTP and utility services
+│   ├── pages/            # Core views (Dashboard, Auth, etc.)
+│   └── app.module.ts     # Main application module
+```
+
+---
+
+## 🧪 Development Setup
+
+To get started with local development:
 
 ```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then visit `http://localhost:4200/` in your browser. The app reloads automatically upon code changes.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🔧 Code Scaffolding
+
+You can easily generate components, directives, services, and more:
 
 ```bash
-ng generate component component-name
+ng generate component my-component
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+To see more scaffolding options:
 
 ```bash
 ng generate --help
 ```
 
-## Building
+---
 
-To build the project run:
+## 🏗️ Build
+
+To build the application for production:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts will be stored in the `dist/` directory. Use the `--configuration production` flag for optimized builds.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## ✅ Running Tests
+
+### Unit Tests
+
+Run unit tests using Karma:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### End-to-End (E2E) Tests
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+> Note: Configure a suitable E2E testing framework such as Cypress or Protractor.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## ☁️ GCP Integration
+
+This app integrates with **Google Cloud Platform** (GCP) to handle user profile image uploads:
+
+* Bucket: `trackflow-bucket`
+* Upload flow is handled client-side via a service account and secure API calls.
+
+---
+
+## 📚 Learn More
+
+* [Angular CLI Documentation](https://angular.dev/tools/cli)
+* [Angular Dev Docs](https://angular.dev/)
+* [Spring Boot Backend (Trackflow API)](https://spring.io/projects/spring-boot)
+* [Google Cloud Storage](https://cloud.google.com/storage)
+
+---
+## 🏷️ Version
+
+>v1.0.0
+
+---
+
+## 🧑‍💻 Author
+
+Developed by **Vimukthi Jayasanka**
+Full-stack Software Engineer | IJSE 
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](license.txt) file for details.
+
+
