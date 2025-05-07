@@ -1,4 +1,4 @@
-#container{
+#container {
   background-image: url('/tree-grows-coin-glass-jar-with-copy-space.jpg');
   background-size: cover;
   background-position: center;
@@ -9,27 +9,58 @@
   backdrop-filter: blur(20px);
   background: rgba(30, 30, 30, 0.9);
   border: none;
+  width: 100%;
 }
 
 .left-panel {
-  background: url('/planting-trees-coin-pile-with-sunlight.jpg') center center/cover no-repeat;
-  color: white;
+  width: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+  min-height: 100%;
+  animation: slideIn 1s ease-in-out;
+  color: #ffffff;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid rgba(255,255,255,0.1);
+  min-width: 280px;
+  max-width: 350px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.left-panel.animate {
+  animation: slideIn 1s ease-in-out;
 }
 
 .dots .dot {
-  width: 8px;
-  height: 8px;
-  background: white;
+  width: 10px;
+  height: 10px;
+  background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
-  opacity: 0.3;
-  margin-right: 6px;
+  margin: 0 4px;
+  opacity: 0.4;
+  transition: opacity 0.3s, background-color 0.3s;
 }
 
 .dots .dot.active {
+  background-color: #fff;
   opacity: 1;
+}
+
+.left-panel h5 {
+  min-height: 60px;
+  transition: opacity 0.5s ease-in-out;
+  word-break: break-word;
 }
