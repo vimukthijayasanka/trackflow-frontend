@@ -1,1 +1,75 @@
-<p>sign-up works!</p>
+<div class="p-5 flex-fill bg-dark text-white animate__animated animate__fadeInDown">
+  <h2 class="mb-2">Create an account</h2>
+  <p class="mb-4">Already have an account?
+    <a routerLink="/auth/sign-in" class="text-primary text-decoration-underline">Log in</a>
+  </p>
+
+  <form #frmRef (ngSubmit)="onSubmit(frmRef, form)" #form="ngForm">
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <label for="exampleInputFirstName" class="form-label">First Name</label>
+        <input name="firstName" #txtFirstName="ngModel" [(ngModel)]="user.firstName"
+               required pattern="^[A-Za-z]{2,30}$"
+               title="First name should contain at least 2 alphabetic characters with no numbers or symbols."
+               type="text" class="form-control"
+               id="exampleInputFirstName" [class.is-invalid]="txtFirstName.invalid && txtFirstName.dirty" />
+      </div>
+      <div class="col-md-6">
+        <label for="exampleInputLastName" class="form-label">Last Name</label>
+        <input name="lastName" #txtLastName="ngModel" type="text" [(ngModel)]="user.lastName"
+               required pattern="^[A-Za-z]{2,30}$" class="form-control"
+               id="exampleInputLastName" [class.is-invalid]="txtLastName.invalid && txtLastName.dirty" />
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="userName" class="form-label">Username</label>
+      <input name="userName" #txtUserName="ngModel" type="text" [(ngModel)]="user.userName"
+             required pattern="^[a-zA-Z0-9_]{5,20}$"
+             class="form-control"
+             id="userName" [class.is-invalid]="txtUserName.invalid && txtUserName.dirty" />
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail" class="form-label">Email address</label>
+      <input name="email" #txtEmail="ngModel" [(ngModel)]="user.email"
+             required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+             title="Please enter a valid email address. e.g. example@domain.com"
+             type="email" class="form-control"
+             id="exampleInputEmail" [class.is-invalid]="txtEmail.invalid && txtEmail.dirty" />
+      <div id="emailHelp" class="m-2 fs-6">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="dateOfBirth" class="form-label">Date of birth</label>
+      <input required name="dob" #txtDob="ngModel" [(ngModel)]="user.dob"
+             type="date" class="form-control"
+             id="dateOfBirth" [class.is-invalid]="txtDob.invalid && txtDob.dirty" />
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword" class="form-label">Password</label>
+      <input required name="password" #txtPassword="ngModel" [(ngModel)]="user.password" type="password"
+             pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+             class="form-control"
+             id="exampleInputPassword" [class.is-invalid]="txtPassword.invalid && txtPassword.dirty" />
+    </div>
+
+    <div class="form-check mb-4">
+      <input required type="checkbox" class="form-check-input" id="exampleCheck1" />
+      <label class="form-check-label" for="exampleCheck1">
+        I agree to the <a href="#" class="text-decoration-underline">terms & conditions</a>
+      </label>
+    </div>
+
+    <div class="d-grid mb-3 gap-2">
+      <button type="submit" class="btn btn-purple">Create account</button>
+      <label class="text-center">or</label>
+    </div>
+    <div class="justify-content-center d-flex">
+      <button type="reset" class="btn btn-warning w-50">Clear</button>
+    </div>
+  </form>
+</div>
