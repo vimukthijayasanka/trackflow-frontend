@@ -1,0 +1,17 @@
+<div id="notificationModal" class="modal-header">
+  <h5 class="modal-title">Notification</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="onCloseNotification()"></button>
+</div>
+<div class="modal-body text-center">
+  <div *ngIf="type === 'success'" class="text-success">
+    <i class="bi bi-check-circle-fill fs-1"></i>
+    <h4 class="mt-3">{{ message }}</h4>
+  </div>
+  <div *ngIf="type === 'error'" class="text-danger">
+    <i class="bi bi-x-circle-fill fs-1"></i>
+    <h4 class="mt-3">{{ message }}</h4>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="onCloseNotification()">Close</button>
+</div>

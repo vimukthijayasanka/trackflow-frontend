@@ -1,0 +1,12 @@
+.modal-body {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.modal-body i {
+  font-size: 3rem;
+}
+
+.modal-footer {
+  justify-content: center;
+}
