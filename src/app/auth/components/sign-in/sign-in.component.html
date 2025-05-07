@@ -1,1 +1,31 @@
-<p>sign-in works!</p>
+<div class="d-flex justify-content-between align-items-center ">
+  <!-- Left: Icon -->
+  <img src="/trackflow.png" alt="icon" class="img-fluid m-2" style="width: 100px; height: 100px;">
+
+  <!-- Right: Text + Sign Up -->
+  <div class="text-end">
+    <p class="d-inline mb-0">Don't have an account?</p>
+    <a routerLink="/auth/sign-up" class="btn btn-outline-dark btn-sm ms-2 text-white" style="background-color: #18b300">
+      Sign Up
+    </a>
+  </div>
+</div>
+
+<div class="w-100 text-center mb-4">
+  <h4>Sign in to <span class="text-primary fw-bold">TrackFlow</span></h4>
+  <p>Welcome to TrackFlow, please enter your login details below to use the app.</p>
+</div>
+
+<form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value, formRef)" class="w-100 px-4">
+  <div class="mb-3">
+    <input type="text" name="userName" [(ngModel)]="user.userName" class="form-control" placeholder="UserName" required>
+  </div>
+  <div class="mb-3">
+    <input type="password" name="password" [(ngModel)]="user.password" class="form-control" placeholder="Password" required>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <button type="submit" class="btn btn-primary w-50">Login</button>
+  </div>
+
+</form>
