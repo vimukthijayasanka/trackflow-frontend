@@ -1,0 +1,35 @@
+#container{
+  background-image: url('/tree-grows-coin-glass-jar-with-copy-space.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.card {
+  max-width: 1000px;
+  backdrop-filter: blur(20px);
+  background: rgba(30, 30, 30, 0.9);
+  border: none;
+}
+
+.left-panel {
+  background: url('/planting-trees-coin-pile-with-sunlight.jpg') center center/cover no-repeat;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.dots .dot {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.3;
+  margin-right: 6px;
+}
+
+.dots .dot.active {
+  opacity: 1;
+}
