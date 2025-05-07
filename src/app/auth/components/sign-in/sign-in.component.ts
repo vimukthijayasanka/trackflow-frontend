@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {AuthService} from '../../../service/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,11 +15,11 @@ export class SignInComponent {
     password:''
   };
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
   url="http://localhost:8080/app/auth/login"
 
   onSubmit(form:HTMLFormElement, ngForm:NgForm){
-    this.http.post(this.url, this.user, {responseType: "json",withCredentials: true}).subscribe(
+    this.authService.login(this.user).subscribe(
       {
         next: res => {
           console.log(res);

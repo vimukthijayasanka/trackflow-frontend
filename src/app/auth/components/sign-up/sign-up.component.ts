@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {NgForm} from '@angular/forms';
+import {AuthService} from '../../../service/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,7 +18,7 @@ export class SignUpComponent {
     password:''
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private authService: AuthService) { }
 
   onSubmit(form: HTMLFormElement, ngForm: NgForm){
     if (ngForm.invalid) {
@@ -27,7 +27,7 @@ export class SignUpComponent {
       elm.select();
     } else{
       if(this.validateForm()){
-        this.http.post('http://localhost:8080/app/user', this.user, {responseType: 'text'}).subscribe({
+        this.authService.signup(this.user).subscribe({
           next: res => {
             console.log(res);
           },
