@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../../../service/auth.service';
+import {NotificationService} from '../../../service/notification.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,26 +19,30 @@ export class SignUpComponent {
     password:''
   };
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private notificationService: NotificationService) { }
 
   onSubmit(form: HTMLFormElement, ngForm: NgForm){
     if (ngForm.invalid) {
       const elm = <HTMLInputElement>form.querySelector('.ng-invalid');
       elm.focus();
       elm.select();
+      this.notificationService.showNotification("Please fill all the fields as required", "error");
     } else{
       if(this.validateForm()){
         this.authService.signup(this.user).subscribe({
           next: res => {
             console.log(res);
+            this.notificationService.showNotification("Registration is succeed, Now you can LogIn", "success");
           },
           error: err => {
-            console.log(err)
+            console.log(err);
+            this.notificationService.showNotification("Registration Failed", "error");
           }
         });
         ngForm.reset();
       } else {
         console.log("Form invalid");
+        this.notificationService.showNotification("Invalid Registration", "error");
       }
     }
   }

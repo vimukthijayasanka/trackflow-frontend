@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../../../service/auth.service';
+import {NotificationService} from '../../../service/notification.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,8 +16,7 @@ export class SignInComponent {
     password:''
   };
 
-  constructor(private router: Router, private authService: AuthService) {}
-  url="http://localhost:8080/app/auth/login"
+  constructor(private router: Router, private authService: AuthService, private notificationService: NotificationService) {}
 
   onSubmit(form:HTMLFormElement, ngForm:NgForm){
     this.authService.login(this.user).subscribe(
@@ -30,6 +30,7 @@ export class SignInComponent {
         },
         error: err => {
           console.log(err);
+          this.notificationService.showNotification("Check your username or password", 'error')
         }
       });
     ngForm.reset();
