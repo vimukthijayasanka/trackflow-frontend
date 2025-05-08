@@ -17,4 +17,8 @@ export class IncomeExpenseService {
     return this.http.get<any>(this.baseUrl + '/transactions',{withCredentials: true})
   }
 
+  removeTransactionData(id: number){
+    return this.http.delete(`${this.baseUrl}/transactions/${id}`, {withCredentials: true})
+  }
+
 }

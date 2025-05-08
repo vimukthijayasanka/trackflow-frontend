@@ -1,0 +1,54 @@
+.transaction-section-container {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  color: #000000;
+
+  .transaction-table {
+    thead tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    tbody tr {
+      transition: background 0.2s ease;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+      }
+    }
+
+    td {
+      padding: 1rem 0.75rem;
+      color: #000000;
+    }
+  }
+}
+
+#btn-remove{
+  border: none;
+  color: white !important;
+  background-color: crimson;
+}
+
+#btn-remove:hover {
+  background-color: #c20a2f;
+  transform: scale(1.05);
+}
+
+#icon-pen {
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+#icon-trash {
+  font-size: 1.2rem;
+  color: #dc3545;
+}
+
+#icon-pen:hover {
+  color: #18b300;
+}
+
+#icon-trash:hover {
+  color: #bf2a38;
+}
+
