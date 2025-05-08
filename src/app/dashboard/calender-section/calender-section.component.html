@@ -1,0 +1,22 @@
+<div id="container" class="justify-content-center align-items-center align-content-center d-flex min-vh-100">
+  <app-particle></app-particle>
+  <div class="card shadow rounded-4 p-4 mb-4 bg-body-tertiary mx-auto animate__animated animate__fadeInUp" style="min-width: 800px; height: auto;">
+    <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap ">
+      <div>
+        <h5 class="fw-bold mb-0 text-black">Calendar</h5>
+        <small class="text-black">Your personal income-expense view</small>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div style="background: rgba(255, 255, 255, 0.9); border-radius: 16px; padding: 0; width: 90%; max-width: 1000px;"
+        class="shadow p-3">
+        <full-calendar [options]="calendarOptions"
+          style="width: 100%; min-height: 500px; max-height: 800px;">
+        </full-calendar>
+      </div>
+    </div>
+  </div>
+</div>
+
+
