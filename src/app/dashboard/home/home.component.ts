@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Transaction} from '../../transaction';
+import {Transaction} from '../../interface/transaction';
 import {IncomeExpenseService} from '../../service/income-expense.service';
 import {NotificationService} from '../../service/notification.service';
 
