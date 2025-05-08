@@ -1,0 +1,5 @@
+#container{
+  background-image: url('/dashboard/home-background.jpg');
+  background-size: cover;
+  background-position: center;
+}

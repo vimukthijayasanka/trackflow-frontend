@@ -1,0 +1,23 @@
+<div id="container" class="dashboard-home p-4 ps-5">
+
+  <div class="navbar-section">
+    <app-navbar></app-navbar>
+  </div>
+
+  <div class="stat-card-row d-flex gap-3 pb-4">
+      <app-summary-card icon="bi bi-wallet" label="Total Income" amount="LKR {{totalIncome}}" [progress]=percentageOfIncomeUsed()></app-summary-card>
+      <app-summary-card icon="bi bi-cash-stack" label="Total Expenses" amount="LKR {{totalExpenses}}" [progress]=percentageOfExpense()></app-summary-card>
+      <app-summary-card icon="bi bi-piggy-bank" label="Savings" amount="LKR {{totalSavings}}" [progress]="percentageOfSavings()"></app-summary-card>
+      <app-summary-card icon="bi bi-credit-card" label="Loan" amount="LKR {{totalLoan}}" [progress]="percentageOfLoan()"></app-summary-card>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-section mb-4 justify-content-center align-content-center">
+    <app-graph></app-graph>
+  </div>
+
+  <!-- Recent Transactions -->
+  <div class="transaction-section mb-4">
+    <app-transaction-table></app-transaction-table>
+  </div>
+</div>

@@ -19,4 +19,12 @@ export class AuthService {
   signup(user: any){
     return this.http.post(`${this.baseUrl}/user`, user, {responseType: 'text'});
   }
+
+  logout(){
+    return this.http.delete(`${this.baseUrl}/auth/logout`, {withCredentials:true});
+  }
+
+  getUserDetails(){
+    return this.http.get<any>(`${this.baseUrl}/user/me`, {withCredentials: true});
+  }
 }

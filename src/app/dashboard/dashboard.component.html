@@ -1,1 +1,13 @@
-<p>dashboard works!</p>
+<!-- Dashboard Layout -->
+<div class="d-flex h-100">
+  <!-- Sidebar -->
+  <div class="left-sidebar bg-dark text-white p-3">
+    <h5>Navigation</h5>
+    <app-menubar></app-menubar>
+  </div>
+
+  <!-- Main Content that changes via routing -->
+  <div class="main-content w-100 overflow-auto">
+    <router-outlet></router-outlet>
+  </div>
+</div>

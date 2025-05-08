@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm rounded-4 px-4 py-2 mb-4 animate__animated animate__bounceInDown">
+  <div class="container-fluid justify-content-between">
+    <!-- App Title or Logo -->
+    <a class="navbar-brand fw-bold text-primary" href="#"><img src="/trackflow.png" alt="icon" style="width: 50px; height: 50px">
+      <label class="fw-bold text-success">TrackFlow</label></a>
+
+    <!-- Right Side -->
+    <div class="d-flex align-items-center gap-3">
+
+      <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          <i class="bi bi-person-circle"></i> {{ userName }}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" routerLink="/dashboard/setting">Settings</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
+
+      <!-- Profile Icon -->
+      <div id="profile" class="btn btn-outline-secondary p-2" style="border-radius: 50%; width: 50px; height: 50px" title="Profile">
+        <i class="bi bi-person-circle fs-5"></i>
+      </div>
+
+      <!-- Settings Icon -->
+      <button id="setting" class="btn btn-outline-secondary rounded-circle p-2" style="border-radius: 50%; width: 50px; height: 50px" (click)="goToSettings()" title="Settings">
+        <i class="bi bi-gear fs-5"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+

@@ -1,0 +1,40 @@
+<div class="transaction-section-container card glassmorphism shadow-lg p-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="fw-bold text-black">Recent Transactions</h5>
+    <button id="btn-remove" (click)="editOrDeleteTransaction()" class="btn btn-outline-light btn-sm text-black border-black">Edit/Remove</button>
+  </div>
+
+  <div class="table-responsive rounded-4">
+    <table class="table transaction-table mb-0">
+      <thead>
+      <tr>
+        <th class="text-black">Date</th>
+        <th class="text-black">Type</th>
+        <th class="text-black">Description</th>
+        <th class="text-black text-end">Amount</th>
+        <th *ngIf="isEdit" class="text-black">Edit</th>
+        <th *ngIf="isEdit" class="text-black">Remove</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let txn of incomeExpenseData">
+        <td>{{ txn.transactionDate | date: 'yyyy-MM-dd'  }}</td>
+
+        <!-- Category with color -->
+        <td [ngClass]="{'text-success': txn.type === 'INCOME', 'text-danger': txn.type === 'EXPENSE', 'fw-bold':txn.type}">
+          {{ txn.type }}
+        </td>
+
+        <td>{{ txn.description }}</td>
+
+        <td class="text-end" [ngClass]="{'text-success': txn.type === 'INCOME', 'text-danger': txn.type === 'EXPENSE', 'fw-bold': txn.type}">
+          {{ txn.type === 'INCOME' ? '+' : '-' }}{{ txn.amount | number:'1.2-2' }}
+        </td>
+
+        <td *ngIf="isEdit"><i  id="icon-pen" class="bi bi-pen"></i></td>
+        <td *ngIf="isEdit"><i (click)="removeTransaction(txn.id)" id="icon-trash" class="bi bi-trash-fill"></i></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
