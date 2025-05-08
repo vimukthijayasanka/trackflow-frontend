@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Transaction} from '../../transaction';
 
 @Component({
@@ -7,7 +7,7 @@ import {Transaction} from '../../transaction';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   incomeExpenseData: Transaction[] = [];
   totalExpenses = 0;
   totalIncome = 0;
@@ -18,5 +18,8 @@ export class HomeComponent {
   constructor() {
   }
 
+  ngOnInit() {
+
+  }
 
 }
