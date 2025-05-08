@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {NotificationService} from '../../service/notification.service';
 import {IncomeExpenseService} from '../../service/income-expense.service';
+import {ConfirmationService} from '../../service/confirmation.service';
 
 @Component({
   selector: 'app-transaction-section',
@@ -11,7 +12,9 @@ import {IncomeExpenseService} from '../../service/income-expense.service';
 })
 export class TransactionSectionComponent {
 
-  constructor(private incomeExpenseService: IncomeExpenseService, private notificationService: NotificationService) {
+  constructor(private incomeExpenseService: IncomeExpenseService,
+              private notificationService: NotificationService,
+              private confirmationService: ConfirmationService) {
   }
 
   transaction = {
@@ -36,7 +39,9 @@ export class TransactionSectionComponent {
     form.reset();
   }
 
-  clearForm(form: any) {
+  async clearForm(form: any) {
+    const confirmed = await this.confirmationService.showConfirmation("Are you sure you want to clear the form?");
+    if (!confirmed) return;
     form.reset();
   }
 }

@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {NotificationService} from '../../service/notification.service';
 import {AuthService} from '../../service/auth.service';
 import {NgForm} from '@angular/forms';
+import {ConfirmationService} from '../../service/confirmation.service';
 
 @Component({
   selector: 'app-setting-section',
@@ -24,7 +25,9 @@ export class SettingSectionComponent implements OnInit {
     profilePicUrl: ''
   }
 
-  constructor(private authService: AuthService, private notificationService: NotificationService) {
+  constructor(private authService: AuthService,
+              private notificationService: NotificationService,
+              private confirmationService: ConfirmationService) {
   }
 
   ngOnInit() {
@@ -44,12 +47,15 @@ export class SettingSectionComponent implements OnInit {
           }
       },
       error:err=>{
+        console.log(err);
         this.notificationService.showNotification("Error Fetching User Data", "error");
       }
     });
   }
 
-  onSubmit(form: HTMLFormElement, ngForm: NgForm) {
+  async onSubmit(form: HTMLFormElement, ngForm: NgForm) {
+    const confirmed = await this.confirmationService.showConfirmation("Are you sure you want to update your profile?");
+    if (!confirmed) return;
     if (ngForm.invalid) {
       const elm = <HTMLInputElement>form.querySelector('.ng-invalid');
       elm.focus();
@@ -63,6 +69,7 @@ export class SettingSectionComponent implements OnInit {
             this.notificationService.showNotification("Profile Updated Successfully", "success");
           },
           error: err => {
+            console.log(err);
             this.notificationService.showNotification("Error Updating Profile", "error");
           }
         });

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../service/auth.service';
+import {ConfirmationService} from "../../../service/confirmation.service";
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ import {AuthService} from '../../../service/auth.service';
 export class NavbarComponent implements OnInit{
   userName = '';
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService, private confirmationService: ConfirmationService) {
   }
 
   goToSettings() {
@@ -36,7 +37,9 @@ export class NavbarComponent implements OnInit{
     )
   }
 
-  logout() {
+  async logout() {
+    const confirmed = await this.confirmationService.showConfirmation("Are you sure you want to logout?");
+    if (!confirmed) return;
     this.authService.logout().subscribe(
       {
         next: res => {

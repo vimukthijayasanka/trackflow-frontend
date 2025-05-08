@@ -9,6 +9,8 @@ import {SignUpComponent} from './auth/components/sign-up/sign-up.component';
 import {FormsModule} from '@angular/forms';
 import {provideHttpClient} from '@angular/common/http';
 import { NotificationModalComponent } from './shared/notification-modal/notification-modal.component';
+import {ConfirmationModalComponent} from './shared/confirmation-modal/confirmation-modal.component';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { NotificationModalComponent } from './shared/notification-modal/notifica
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    SharedModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

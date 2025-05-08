@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Transaction} from '../../../interface/transaction';
 import {IncomeExpenseService} from '../../../service/income-expense.service';
 import {NotificationService} from '../../../service/notification.service';
+import {ConfirmationService} from "../../../service/confirmation.service";
 
 @Component({
   selector: 'app-transaction-table',
@@ -15,7 +16,8 @@ export class TransactionTableComponent implements OnInit{
   incomeExpenseData: Transaction[] = [];
 
   constructor(private incomeExpenseService: IncomeExpenseService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private confirmationService: ConfirmationService) {
   }
 
   ngOnInit() {
@@ -37,7 +39,9 @@ export class TransactionTableComponent implements OnInit{
     this.isEdit = !this.isEdit;
   }
 
-  removeTransaction(id:number) {
+  async removeTransaction(id:number) {
+    const confirmed = await this.confirmationService.showConfirmation("Are you sure you want to delete this transaction?");
+    if (!confirmed) return;
     this.incomeExpenseService.removeTransactionData(id).subscribe(
       {
         next: res => {
