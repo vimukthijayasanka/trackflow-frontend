@@ -27,4 +27,12 @@ export class AuthService {
   getUserDetails(){
     return this.http.get<any>(`${this.baseUrl}/user/me`, {withCredentials: true});
   }
+
+  updateUserDetails(user: any){
+    return this.http.put(`${this.baseUrl}/user/me`, user, {responseType: "text" ,withCredentials: true});
+  }
+
+  updateUserProfileImage(formData: FormData){
+    return this.http.post(`${this.baseUrl}/user/me/upload`, formData, {responseType: "text", withCredentials: true});
+  }
 }

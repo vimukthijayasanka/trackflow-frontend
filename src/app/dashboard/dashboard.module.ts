@@ -20,6 +20,7 @@ import {NgxParticlesModule} from '@tsparticles/angular';
 import {CalenderSectionComponent} from './calender-section/calender-section.component';
 import {SharedModule} from '../shared/shared.module';
 import { ReportSectionComponent } from './report-section/report-section.component';
+import { SettingSectionComponent } from './setting-section/setting-section.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ReportSectionComponent } from './report-section/report-section.componen
     NavbarComponent,
     TransactionSectionComponent,
     CalenderSectionComponent,
-    ReportSectionComponent
+    ReportSectionComponent,
+    SettingSectionComponent
   ],
   imports: [
     CommonModule,

@@ -5,6 +5,7 @@ import {HomeComponent} from './home/home.component';
 import {TransactionSectionComponent} from './transaction-section/transaction-section.component';
 import {CalenderSectionComponent} from './calender-section/calender-section.component';
 import {ReportSectionComponent} from './report-section/report-section.component';
+import {SettingSectionComponent} from './setting-section/setting-section.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'transaction-section', component: TransactionSectionComponent},
       { path: 'calender-section', component: CalenderSectionComponent},
       { path: 'report-section', component: ReportSectionComponent},
+      { path: 'setting-section', component: SettingSectionComponent},
     ]
   }
 ];

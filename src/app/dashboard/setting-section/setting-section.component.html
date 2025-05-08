@@ -1,0 +1,91 @@
+<div id="container" class=" w-100 h-100 d-flex justify-content-center align-items-center">
+  <app-particle [backgroundColor]="'#5eb1f6'"></app-particle>
+  <div class="row justify-content-center animate__animated animate__fadeInLeft" style="width: 800px;">
+    <div class="col-md-8">
+      <div class="card shadow-lg rounded-4">
+        <div class="card-header bg-primary text-white d-flex align-items-center m-2 rounded-4">
+          <i class="bi bi-person-circle me-2 fs-3"></i>
+          <h4 class="mb-0">Profile Settings</h4>
+          <div class="ms-auto">
+            <button  *ngIf="!isEditMode" (click)="enableEdit()" class="btn btn-danger text-white" type="button"><i class="bi bi-pen"></i> Edit</button>
+          </div>
+        </div>
+        <div class="card-body p-4">
+          <form #frmRef (ngSubmit)="onSubmit(frmRef, form)" #form="ngForm">
+            <div class="text-center mb-4">
+              <img [src]="isEditMode ? userUpdateData.profilePicUrl : userData.profilePicUrl" class="rounded-circle img-thumbnail" alt="Profile Picture" style="width: 120px; height: 120px;">
+              <div class="mt-2">
+                <input *ngIf="isEditMode" type="file" (change)="uploadProfileImage($event)" hidden #fileInput>
+                <button class="btn btn-sm btn-outline-primary" type="button" *ngIf="isEditMode" (click)="triggerFileInput()">
+                  <i class="bi bi-upload"></i> Change Photo
+                </button>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label">First Name</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-person"></i></span>
+                  <input [disabled]="!isEditMode" name="firstName" [(ngModel)]="userUpdateData.firstName" pattern="^[A-Za-z]{2,30}$"
+                         #txtFirstName="ngModel" [class.is-invalid]="txtFirstName.invalid && txtFirstName.dirty"
+                         type="text" class="form-control" value="{{userData.firstName}}">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Last Name</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-person"></i></span>
+                  <input [disabled]="!isEditMode" name="lastName" #txtLastName="ngModel"
+                         [(ngModel)]="userUpdateData.lastName" pattern="^[A-Za-z]{2,30}$" type="text"
+                         class="form-control" value="{{userData.lastName}}"
+                         [class.is-invalid]="txtLastName.invalid && txtLastName.dirty">
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Date of Birth</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+                <input [disabled]="!isEditMode" type="date" class="form-control" value="{{userData.dob}}"
+                       [(ngModel)]="userUpdateData.dob" [class.is-invalid]="txtDob.invalid && txtDob.dirty"
+                       #txtDob="ngModel" name="dob">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                <input disabled type="text" class="form-control" value="{{userData.userName}}">
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Email</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                <input [disabled]="!isEditMode" type="email" class="form-control" value="{{userData.email}}"
+                       #txtEmail="ngModel" [(ngModel)]="userUpdateData.email"
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email"
+                       title="Please enter a valid email address. e.g. example@domain.com"
+                       [class.is-invalid]="txtEmail.invalid && txtEmail.dirty">
+              </div>
+            </div>
+
+            <div class="d-grid gap-2" *ngIf="isEditMode">
+              <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save"></i> Save Changes
+              </button>
+              <button type="button" (click)="cancelEdit()" class="btn btn-outline-secondary">
+                <i class="bi bi-x-circle"></i> Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p>setting-section works!</p>
