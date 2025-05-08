@@ -21,7 +21,7 @@ import { NotificationModalComponent } from './shared/notification-modal/notifica
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
