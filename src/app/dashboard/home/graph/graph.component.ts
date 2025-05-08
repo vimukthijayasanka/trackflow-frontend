@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Transaction} from '../../interface/transaction';
-import {IncomeExpenseService} from '../../service/income-expense.service';
+import {Transaction} from '../../../interface/transaction';
+import {IncomeExpenseService} from '../../../service/income-expense.service';
 import {BaseChartDirective} from 'ng2-charts';
 import {ChartData, ChartOptions} from 'chart.js';
 
