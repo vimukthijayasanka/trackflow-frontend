@@ -13,7 +13,11 @@
         <div class="card-body p-4">
           <form #frmRef (ngSubmit)="onSubmit(frmRef, form)" #form="ngForm">
             <div class="text-center mb-4">
-              <img [src]="isEditMode ? userUpdateData.profilePicUrl : userData.profilePicUrl" class="rounded-circle img-thumbnail" alt="Profile Picture" style="width: 120px; height: 120px;">
+              <img
+                [src]="isEditMode ? userUpdateData.profilePicUrl : userData.profilePicUrl"
+                class="rounded-circle img-thumbnail"
+                alt="Profile Picture"
+                style="width: 150px; height: 150px; object-fit: cover; object-position: center;">
               <div class="mt-2">
                 <input *ngIf="isEditMode" type="file" (change)="uploadProfileImage($event)" hidden #fileInput>
                 <button class="btn btn-sm btn-outline-primary" type="button" *ngIf="isEditMode" (click)="triggerFileInput()">
@@ -88,4 +92,3 @@
     </div>
   </div>
 </div>
-<p>setting-section works!</p>

@@ -22,7 +22,6 @@ export class CalenderSectionComponent implements OnInit {
         this.incomeExpenseData = data;
         const events = this.extractCalenderEvents();
         this.calendarOptions = {...this.calendarOptions, events};
-        console.log(events);
       },
       error: (error) => {
         console.log(error);

@@ -102,6 +102,5 @@ export class ParticleComponent implements OnInit {
   }
 
   particlesLoaded(container: Container): void {
-    console.log(container);
   }
 }

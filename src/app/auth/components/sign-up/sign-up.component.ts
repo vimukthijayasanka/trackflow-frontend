@@ -31,17 +31,14 @@ export class SignUpComponent {
       if(this.validateForm()){
         this.authService.signup(this.user).subscribe({
           next: res => {
-            console.log(res);
             this.notificationService.showNotification("Registration is succeed, Now you can LogIn", "success");
           },
           error: err => {
-            console.log(err);
             this.notificationService.showNotification("Registration Failed", "error");
           }
         });
         ngForm.reset();
       } else {
-        console.log("Form invalid");
         this.notificationService.showNotification("Invalid Registration", "error");
       }
     }

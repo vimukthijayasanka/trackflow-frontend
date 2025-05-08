@@ -5,3 +5,8 @@
 #setting:hover {
   background-color: #0281ff;
 }
+
+a.dropdown-item:hover{
+  background-color: #007bff;
+  color: white;
+}

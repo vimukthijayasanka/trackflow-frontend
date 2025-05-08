@@ -22,14 +22,12 @@ export class SignInComponent {
     this.authService.login(this.user).subscribe(
       {
         next: res => {
-          console.log(res);
           localStorage.setItem('user', JSON.stringify(res));
 
           // After login success, navigate to dashboard
           this.router.navigate(['/dashboard']);
         },
         error: err => {
-          console.log(err);
           this.notificationService.showNotification("Check your username or password", 'error')
         }
       });

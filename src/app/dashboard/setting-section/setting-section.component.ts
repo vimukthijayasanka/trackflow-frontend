@@ -86,7 +86,6 @@ export class SettingSectionComponent implements OnInit {
     const formData = new FormData();
     formData.append('profilePic', file);
     formData.append('previousProfilePicUrl', this.userUpdateData.profilePicUrl || '');
-    console.log(formData);
 
     this.authService.updateUserProfileImage(formData).subscribe({
       next: (url: string) => {
