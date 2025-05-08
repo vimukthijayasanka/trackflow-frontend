@@ -13,6 +13,7 @@ import { NavbarComponent } from './home/navbar/navbar.component';
 import {BaseChartDirective, provideCharts, withDefaultRegisterables} from 'ng2-charts';
 import {RouterModule} from '@angular/router';
 import {provideHttpClient} from '@angular/common/http';
+import { TransactionSectionComponent } from './transaction-section/transaction-section.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {provideHttpClient} from '@angular/common/http';
     SummaryCardComponent,
     GraphComponent,
     TransactionTableComponent,
-    NavbarComponent
+    NavbarComponent,
+    TransactionSectionComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,49 @@
+<div id="container" class="w-100 min-vh-100 d-flex justify-content-center align-items-center px-2 ">
+
+  <div class="transaction-panel card p-3 p-md-4 shadow-lg w-100 animate__animated animate__bounceInLeft " style="max-width: 800px;">
+
+    <div class="card-header bg-success mb-3 rounded-4 border-0 text-center">
+      <h2 class="text-white fw-bold mb-0">Transaction Details</h2>
+    </div>
+
+    <div class="panel-body">
+      <form #form id="transaction-form" class="text-black fs-6" (ngSubmit)="onSubmit(form, ngform)" #ngform="ngForm">
+
+        <div class="mb-3">
+          <label for="date" class="form-label text-dark fw-bold">Transaction Date</label>
+          <input type="date" id="date" [(ngModel)]="transaction.transactionDate" name="date" required class="form-control bg-light border-0 text-dark" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-dark fw-bold">Transaction Type</label>
+          <div class="d-flex flex-column flex-sm-row gap-2 gap-sm-4">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" [(ngModel)]="transaction.type" name="type" value="INCOME" id="income">
+              <label class="form-check-label text-success" for="income">Income</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" [(ngModel)]="transaction.type" name="type" value="EXPENSE" id="expense">
+              <label class="form-check-label text-danger" for="expense">Expense</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="amount" class="form-label text-dark fw-bold">Amount</label>
+          <input type="number" id="amount" [(ngModel)]="transaction.amount" name="amount" required class="form-control bg-light border-0 text-dark" />
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label text-dark fw-bold">Description</label>
+          <textarea id="description" [(ngModel)]="transaction.description" name="description" class="form-control bg-light border-0 text-dark" placeholder="Enter transaction details" rows="3"></textarea>
+        </div>
+
+        <div class="text-center d-grid gap-2 d-md-flex justify-content-md-center">
+          <!-- d-grid on mobile, flex on md+ for buttons -->
+          <button type="submit" class="btn btn-primary btn-lg rounded-pill px-4">Submit</button>
+          <button type="button" class="btn btn-outline-warning btn-lg rounded-pill px-4" (click)="clearForm(form)">Clear</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

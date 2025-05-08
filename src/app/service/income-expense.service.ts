@@ -14,11 +14,14 @@ export class IncomeExpenseService {
   }
 
   getIncomeExpenseData():Observable<any>{
-    return this.http.get<any>(this.baseUrl + '/transactions',{withCredentials: true})
+    return this.http.get<any>(`${this.baseUrl}/transactions`, {withCredentials: true})
+  }
+
+  createNewTransaction(transaction: any){
+    return this.http.post(`${this.baseUrl}/transactions`, transaction, {responseType:"text", withCredentials: true})
   }
 
   removeTransactionData(id: number){
     return this.http.delete(`${this.baseUrl}/transactions/${id}`, {withCredentials: true})
   }
-
 }
