@@ -1,0 +1,45 @@
+<div id="container" class=" justify-content-center align-items-center align-content-center d-flex min-vh-100">
+  <div class="card p-4 shadow rounded-4 m-5 animate__animated animate__zoomIn" style="min-height: 600px; min-width: 800px">
+    <h5 class="fw-bold text-black mb-3">Generate Report</h5>
+
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <label class="form-label text-black">Start Date</label>
+        <input type="date" class="form-control" [(ngModel)]="startDate">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label text-black">End Date</label>
+        <input type="date" class="form-control" [(ngModel)]="endDate">
+      </div>
+      <div class="col-md-4 d-flex align-items-end">
+        <button class="btn btn-primary me-2" (click)="filterTransactions()">Filter</button>
+        <button class="btn btn-success" (click)="generatePDFReport()" [disabled]="filteredData.length === 0">Download PDF</button>
+      </div>
+    </div>
+
+    <div class="table-responsive rounded">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th class="text-end">Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let txn of filteredData">
+          <td>{{ txn.transactionDate | date: 'yyyy-MM-dd' }}</td>
+          <td [ngClass]="{'text-success': txn.type === 'INCOME', 'text-danger': txn.type === 'EXPENSE'}">{{ txn.type }}</td>
+          <td>{{ txn.description }}</td>
+          <td class="text-end" [ngClass]="{'text-success': txn.type === 'INCOME', 'text-danger': txn.type === 'EXPENSE'}">
+            {{ txn.type === 'INCOME' ? '+' : '-' }}{{ txn.amount | number:'1.2-2' }}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

@@ -19,6 +19,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import {NgxParticlesModule} from '@tsparticles/angular';
 import {CalenderSectionComponent} from './calender-section/calender-section.component';
 import {SharedModule} from '../shared/shared.module';
+import { ReportSectionComponent } from './report-section/report-section.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {SharedModule} from '../shared/shared.module';
     TransactionTableComponent,
     NavbarComponent,
     TransactionSectionComponent,
-    CalenderSectionComponent
+    CalenderSectionComponent,
+    ReportSectionComponent
   ],
   imports: [
     CommonModule,
