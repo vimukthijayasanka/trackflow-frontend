@@ -10,6 +10,9 @@ import { SummaryCardComponent } from './summary-card/summary-card.component';
 import { GraphComponent } from './graph/graph.component';
 import { TransactionTableComponent } from './transaction-table/transaction-table.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {BaseChartDirective, provideCharts, withDefaultRegisterables} from 'ng2-charts';
+import {RouterModule} from '@angular/router';
+import {provideHttpClient} from '@angular/common/http';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { NavbarComponent } from './navbar/navbar.component';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    FormsModule
-  ]
+    FormsModule,
+    BaseChartDirective,
+    RouterModule.forChild([])
+  ],
+  providers:[provideHttpClient(), provideCharts(withDefaultRegisterables())],
 })
 export class DashboardModule { }
