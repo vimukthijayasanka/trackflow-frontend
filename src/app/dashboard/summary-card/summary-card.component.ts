@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-summary-card',
@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './summary-card.component.css'
 })
 export class SummaryCardComponent {
-
+  @Input() icon: string = '';
+  @Input() label: string = '';
+  @Input() amount: string = '';
+  @Input() progress: number = 0;
 }

@@ -1,1 +1,24 @@
-<p>summary-card works!</p>
+<div class="card shadow" style="width: 18rem;">
+  <div class="card-body">
+    <i [class]="icon + ' fs-4 text-primary'"></i>
+    <h6 class="card-subtitle mb-2 text-muted">{{ label }}</h6>
+    <h3 class="card-title">{{ amount }}</h3>
+    <div
+      class="progress mt-2"
+      role="progressbar"
+      [attr.aria-valuenow]="progress"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      <div
+        class="progress-bar"
+        [style.width.%]="progress"
+        [ngClass]="{
+          'bg-success': progress >= 75,
+          'bg-warning': progress >= 50 && progress < 75,
+          'bg-danger': progress < 50
+        }"
+      ></div>
+    </div>
+  </div>
+</div>
