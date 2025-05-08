@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Transaction} from '../../interface/transaction';
-import {IncomeExpenseService} from '../../service/income-expense.service';
-import {NotificationService} from '../../service/notification.service';
+import {Transaction} from '../../../interface/transaction';
+import {IncomeExpenseService} from '../../../service/income-expense.service';
+import {NotificationService} from '../../../service/notification.service';
 
 @Component({
   selector: 'app-transaction-table',
