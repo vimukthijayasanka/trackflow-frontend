@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { SummaryCardComponent } from './summary-card/summary-card.component';
 import { GraphComponent } from './graph/graph.component';
 import { TransactionTableComponent } from './transaction-table/transaction-table.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TransactionTableComponent } from './transaction-table/transaction-table
     HomeComponent,
     SummaryCardComponent,
     GraphComponent,
-    TransactionTableComponent
+    TransactionTableComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
