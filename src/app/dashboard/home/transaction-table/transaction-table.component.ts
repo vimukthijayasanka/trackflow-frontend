@@ -19,6 +19,10 @@ export class TransactionTableComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.fetchTransactions();
+  }
+
+  fetchTransactions() {
     this.incomeExpenseService.getIncomeExpenseData().subscribe({
       next: (data) => {
         this.incomeExpenseData = data;
@@ -26,7 +30,7 @@ export class TransactionTableComponent implements OnInit{
       error: (error) => {
         console.log(error);
       }
-    })
+    });
   }
 
   editOrDeleteTransaction( ) {
@@ -38,6 +42,7 @@ export class TransactionTableComponent implements OnInit{
       {
         next: res => {
           this.notificationService.showNotification("Transaction Deleted Successfully", "success");
+          this.fetchTransactions();
         },
         error: err => {
           this.notificationService.showNotification("Error Deleting Transaction", "error");
