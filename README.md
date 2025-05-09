@@ -17,6 +17,22 @@
 * 💡 **Responsive UI** with reusable and shared components
 
 ---
+## 📸 Screenshots
+
+### 🔐 Login Page
+![login-page](screenshots/login.png)
+### 🏠 Dashboard
+![login-page](screenshots/dashboard.png)
+### ➕ Add Transaction
+![login-page](screenshots/transactions.png)
+### 📅 Calender
+![login-page](screenshots/calender.png)
+### 📄 Reports
+![login-page](screenshots/reports.png)
+### 👤 Profile Management
+![login-page](screenshots/profile.png)
+
+---
 
 ## 📦 Project Structure
 
