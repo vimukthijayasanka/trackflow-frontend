@@ -23,10 +23,16 @@
 ```
 src/
 ├── app/
-│   ├── components/       # Shared and page-specific UI components
-│   ├── services/         # HTTP and utility services
-│   ├── pages/            # Core views (Dashboard, Auth, etc.)
-│   └── app.module.ts     # Main application module
+│   ├── auth/
+│   │   ├── components/                # Sign in / Sign up / Landing-page components
+│   │   ├── auth.module.ts/            # Auth module declarations
+│   │   ├── auth-routing.module.ts/    # Routing module for authentication components
+│   ├── dashboard/                     # dashboard UI components (cards, navs, forms)
+│   ├── interface/                     # Interfaces like Transaction
+│   ├── service/                       # Service for App like notification, confirmation
+│   ├── shared/                        # shared UI components like modals
+│   └── app.module.ts                  # App module declarations
+├── environments                       # Properties files
 ```
 
 ---
@@ -72,23 +78,14 @@ Build artifacts will be stored in the `dist/` directory. Use the `--configuratio
 
 ---
 
-## ✅ Running Tests
+## ⚙️ Backend & API
+Trackflow communicates with a Spring Boot backend that exposes secure REST APIs for:
 
-### Unit Tests
+* 🔐 Authentication
+* 💸 Transaction management
+* 🖼️ Profile image uploads (stored in GCS)
 
-Run unit tests using Karma:
-
-```bash
-ng test
-```
-
-### End-to-End (E2E) Tests
-
-```bash
-ng e2e
-```
-
-> Note: Configure a suitable E2E testing framework such as Cypress or Protractor.
+### ⚠️ CORS Note: The backend only accepts requests from the Angular development server: http://localhost:4200
 
 ---
 
