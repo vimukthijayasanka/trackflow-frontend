@@ -17,22 +17,59 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let txn of incomeExpenseData">
-        <td>{{ txn.transactionDate | date: 'yyyy-MM-dd'  }}</td>
-
-        <!-- Category with color -->
-        <td [ngClass]="{'text-success': txn.type === 'INCOME', 'text-danger': txn.type === 'EXPENSE', 'fw-bold':txn.type}">
-          {{ txn.type }}
+      <tr *ngFor="let txn of incomeExpenseData; let i = index">
+        <td>
+          <ng-container *ngIf="editIndex === i; else viewDate">
+            <input [(ngModel)]="editedTransaction.transactionDate" type="date" class="form-control form-control-sm" />
+          </ng-container>
+          <ng-template #viewDate>{{ txn.transactionDate | date: 'yyyy-MM-dd' }}</ng-template>
         </td>
 
-        <td>{{ txn.description }}</td>
-
-        <td class="text-end" [ngClass]="{'text-success': txn.type === 'INCOME', 'text-danger': txn.type === 'EXPENSE', 'fw-bold': txn.type}">
-          {{ txn.type === 'INCOME' ? '+' : '-' }}{{ txn.amount | number:'1.2-2' }}
+        <td>
+          <ng-container *ngIf="editIndex === i; else viewType">
+            <select [(ngModel)]="editedTransaction.type" class="form-select form-select-sm">
+              <option value="INCOME">INCOME</option>
+              <option value="EXPENSE">EXPENSE</option>
+            </select>
+          </ng-container>
+          <ng-template #viewType>
+      <span [ngClass]="{'text-success': txn.type === 'INCOME', 'text-danger': txn.type === 'EXPENSE', 'fw-bold': txn.type}">
+        {{ txn.type }}
+      </span>
+          </ng-template>
         </td>
 
-        <td *ngIf="isEdit"><i  id="icon-pen" class="bi bi-pen"></i></td>
-        <td *ngIf="isEdit"><i (click)="removeTransaction(txn.id)" id="icon-trash" class="bi bi-trash-fill"></i></td>
+        <td>
+          <ng-container *ngIf="editIndex === i; else viewDesc">
+            <input [(ngModel)]="editedTransaction.description" class="form-control form-control-sm" />
+          </ng-container>
+          <ng-template #viewDesc>{{ txn.description }}</ng-template>
+        </td>
+
+        <td class="text-end">
+          <ng-container *ngIf="editIndex === i; else viewAmount">
+            <input [(ngModel)]="editedTransaction.amount" type="number" class="form-control form-control-sm text-end" />
+          </ng-container>
+          <ng-template #viewAmount>
+      <span [ngClass]="{'text-success': txn.type === 'INCOME', 'text-danger': txn.type === 'EXPENSE', 'fw-bold': txn.type}">
+        {{ txn.type === 'INCOME' ? '+' : '-' }}{{ txn.amount | number:'1.2-2' }}
+      </span>
+          </ng-template>
+        </td>
+
+        <td *ngIf="isEdit">
+          <ng-container *ngIf="editIndex === i; else editIcon">
+            <button class="btn btn-sm btn-success me-1" (click)="saveTransaction()"><i class="bi bi-check"></i></button>
+            <button class="btn btn-sm btn-secondary" (click)="cancelEdit()"><i class="bi bi-x"></i></button>
+          </ng-container>
+          <ng-template #editIcon>
+            <i (click)="editTransaction(txn, i)" id="icon-pen" class="bi bi-pen"></i>
+          </ng-template>
+        </td>
+
+        <td *ngIf="isEdit && editIndex !== i">
+          <i (click)="removeTransaction(txn.id)" id="icon-trash" class="bi bi-trash-fill"></i>
+        </td>
       </tr>
       </tbody>
     </table>
